@@ -1,6 +1,7 @@
 #!name=国内常用网站与 App 去广告
 #!desc=适用于国内常用网站与 App 的 Surge 去广告模块。精简 Ultra 并整合 B站开屏与首页去广告，剔除改区、网站跳转、解锁等附加规则。
-#!version=2026.10.10
+#!category=去广告
+#!version=2026.10.10.1
 #!homepage=https://github.com/Imyukehan/surge-adblock
 #!author=Imyukehan; upstream: Biliverse, yfamilys, ddgksf2013, app2smile, blackmatrix7, deezertidal
 # B站处理基于 Biliverse ADBlock 0.7.3，仅保留开屏与首页广告过滤。
@@ -36,6 +37,8 @@
 ^https?:\/\/sdkapp\.uve\.weibo\.com\/interface\/sdk\/sdkconfig\.php _ reject
 
 [Map Local]
+# 盒马：恢复 Ultra 的启动广告接口。
+^https?://acs-m\.freshippo\.com/gw/mtop\.wdk\.render\.querysinglepage(?:/|\?|$) data-type=text data="" status-code=200
 ^https?://acs\.m\.taobao\.com/gw/mtop\.alibaba\.advertisementservice\.getadv/ data-type=text data="" status-code=200
 ^https?://acs\.m\.taobao\.com/gw/mtop\.damai\.wireless\.home\.welcome/ data-type=text data="" status-code=200
 ^https?://acs\.m\.taobao\.com/gw/mtop\.film\.mtopadvertiseapi\.(queryadvertise|queryloadingbanner)/ data-type=text data="" status-code=200
@@ -122,4 +125,4 @@ Adblock.Bili.feed.index.request.json = type=http-request,pattern=^https?:\/\/app
 Adblock.Bili.response.json = type=http-response, pattern=^https?:\/\/app\.bili(bili\.com|api\.net)\/x\/v2\/(splash\/(brand\/list|event\/list2|list|show)|feed\/index(\/(relate\/)?story)?), requires-body=1, engine=webview, script-path=https://github.com/Biliverse/ADBlock/releases/download/v0.7.3/response.bundle.js, max-size=2097152, argument=Splash="true"&Feed.AD="true"&Feed.Activity="false"&Feed.Vertical="false"&Feed.BlockUpLiveList=""&Feed.Story="true"&Feed.StoryCommercial="false"&Search.AD="false"&Search.Tracking="false"&Search.HotSearch="false"&PGC.AD="false"&Xlive.AD="false"&Xlive.RemoveTrackingCallbacks="false"&Xlive.RemovePreloadTracking="false"&Dynamic.HotTopics="false"&Dynamic.MostVisited="false"&Dynamic.MostVisitedLiveOnly="false"&Dynamic.AdCard="false"&Dynamic.PersonalAdCard="false"&View.AD="false"&DM.Command="false"&DM.Colorful="false"&DM.Airborne="false"&Reply.AD="false"&Reply.CommercialLinks="false"&Reply.SubjectDescriptionCommercial="false"&Privacy.Tracking="false"&Privacy.BlockBiliCommercial="false"&Privacy.BlockThirdParty="false"&Privacy.Strict="false"&Storage="Argument"&LogLevel="WARN"
 
 [MITM]
-hostname = %APPEND% app.58.com, pan.baidu.com, issuecdn.baidupcs.com, c.tieba.baidu.com, tiebac.baidu.com, app.api.ke.com, apps.api.ke.com, m.ctrip.com, ma-adx.ctrip.com, api.m.jd.com, bdsp-x.jd.com, dsp-x.jd.com, api.m.mi.com, shop-api.retail.mi.com, wmapi.meituan.com, *.meituan.com, flowplus.meituan.net, img.meituan.net, p*.meituan.net, api.pinduoduo.com, api.yangkeduo.com, api.smzdm.com, app-api.smzdm.com, *.zdmimg.com, homepage-api.smzdm.com, haojia-api.smzdm.com, haojia.m.smzdm.com, baike-api.smzdm.com, s-api.smzdm.com, zhiyou.m.smzdm.com, mbasecc.bas.cmbchina.com, api.zhihu.com, www.zhihu.com, page-info.zhihu.com, web-render.zhihu.com, p0.pipi.cn, m.mynj.cn, api.weibo.cn, mapi.weibo.cn, api.weibo.com, mapi.weibo.com, boot*.weibo.com, boot.biz.weibo.com, *.uve.weibo.com, acs.m.taobao.com, guide-acs.m.taobao.com, amap-aos-info-nogw.amap.com, m*.amap.com, *.xiaohongshu.com, res.xiaojukeji.com, adv.ccb.com, ad.lofter.com, open.taou.com, api.taou.com, bbs-api.miyoushe.com, acs.m.goofish.com, ad.12306.cn, api.coolapk.com, open-cms-api.uc.cn, open-cms-api.quark.cn, interface*.music.163.com, oauth.secure.pixiv.net, app.bilibili.com, app.biliapi.net
+hostname = %APPEND% acs-m.freshippo.com, app.58.com, pan.baidu.com, issuecdn.baidupcs.com, c.tieba.baidu.com, tiebac.baidu.com, app.api.ke.com, apps.api.ke.com, m.ctrip.com, ma-adx.ctrip.com, api.m.jd.com, bdsp-x.jd.com, dsp-x.jd.com, api.m.mi.com, shop-api.retail.mi.com, wmapi.meituan.com, *.meituan.com, flowplus.meituan.net, img.meituan.net, p*.meituan.net, api.pinduoduo.com, api.yangkeduo.com, api.smzdm.com, app-api.smzdm.com, *.zdmimg.com, homepage-api.smzdm.com, haojia-api.smzdm.com, haojia.m.smzdm.com, baike-api.smzdm.com, s-api.smzdm.com, zhiyou.m.smzdm.com, mbasecc.bas.cmbchina.com, api.zhihu.com, www.zhihu.com, page-info.zhihu.com, web-render.zhihu.com, p0.pipi.cn, m.mynj.cn, api.weibo.cn, mapi.weibo.cn, api.weibo.com, mapi.weibo.com, boot*.weibo.com, boot.biz.weibo.com, *.uve.weibo.com, acs.m.taobao.com, guide-acs.m.taobao.com, amap-aos-info-nogw.amap.com, m*.amap.com, *.xiaohongshu.com, res.xiaojukeji.com, adv.ccb.com, ad.lofter.com, open.taou.com, api.taou.com, bbs-api.miyoushe.com, acs.m.goofish.com, ad.12306.cn, api.coolapk.com, open-cms-api.uc.cn, open-cms-api.quark.cn, interface*.music.163.com, oauth.secure.pixiv.net, app.bilibili.com, app.biliapi.net
