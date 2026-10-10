@@ -1,0 +1,125 @@
+#!name=国内常用网站与 App 去广告
+#!desc=适用于国内常用网站与 App 的 Surge 去广告模块。精简 Ultra 并整合 B站开屏与首页去广告，剔除改区、网站跳转、解锁等附加规则。
+#!version=2026.10.10
+#!homepage=https://github.com/Imyukehan/surge-adblock
+#!author=Imyukehan; upstream: Biliverse, yfamilys, ddgksf2013, app2smile, blackmatrix7, deezertidal
+# B站处理基于 Biliverse ADBlock 0.7.3，仅保留开屏与首页广告过滤。
+# 基础规则精简自 https://yfamilys.com/module/adultra.sgmodule (2026-10-10)。
+# 脚本从原作者地址加载，来源与内容校验值见仓库 sources.json。
+# 不处理起点奖励广告；不包含通用广告联盟域名封锁。
+# Mac 使用 Maipo 时，可单独排除 api.weibo.com 的 MITM。
+
+[URL Rewrite]
+^https?://app\.58\.com/api/home/(advertising|appadv)/ _ reject
+^https?://app\.58\.com/api/home/invite/popupAdv _ reject
+^https?://pan\.baidu\.com/rest/\d\.\d/pcs/ad _ reject
+^https?://issuecdn\.baidupcs\.com/issue/netdisk/guanggao _ reject
+^https?://c\.tieba\.baidu\.com/c/f/forum/getAdInfo _ reject
+^https?://app\.api\.ke\.com/config/config/bootpage _ reject
+^https?://m\.ctrip\.com/restapi/[\w/]+tripAds _ reject
+^https?://api\.m\.jd\.com/client\.action\?functionId=(start|queryMaterialAdverts) _ reject
+^https?://(bdsp-x|dsp-x)\.jd\.com/adx/ _ reject
+^https?://api\.m\.mi\.com/v\d/app/start _ reject
+^https?://wmapi\.meituan\.com/api/v\d/startpicture _ reject
+^https?://flowplus\.meituan\.net/v\d/\w+/linglong/\d+\.(gif|jpg|mp4) _ reject
+^https?://api\.(pinduoduo|yangkeduo)\.com/api/cappuccino/splash _ reject
+^https?://api\.smzdm\.com/v\d/util/loading _ reject
+^https?://s\d\.zdmimg\.com/www/api/v\d/api/thirdAd\.php _ reject
+^https?://api\.m\.jd\.com/client\.action\?functionId=home_launchConfig _ reject
+^https?://mbasecc\.bas\.cmbchina\.com/Edge/api/mlife\.clientface\.clientservice\.api\.advertiseService/preCacheAdvertiseSec _ reject
+^https?://api\.zhihu\.com/fringe/ad _ reject
+^https?://api\.zhihu\.com/ad _ reject
+^https?://api\.zhihu\.com/\w+/\d+/comments/featured-comment-ad _ reject
+^https?:\/\/p0\.pipi\.cn\/mediaplus\/maoyantong_ads_fe\/(0fa3345c|2erwqe2f)\w+.jpg\?imageMogr2\/quality\/85 _ reject
+^https?:\/\/m\.mynj\.cn:\d+\/znmh_FEP\/loadpic\.jsp.*ad_pic.*open _ reject
+^https?:\/\/(preload-click|preload-impression)\.uve\.weibo\.com\/(interface\/wbpullad\/wbpullad_click\.php|wbapplua\/get_wbpullad_log\.lua) _ reject
+^https?:\/\/sdkapp\.uve\.weibo\.com\/interface\/sdk\/sdkconfig\.php _ reject
+
+[Map Local]
+^https?://acs\.m\.taobao\.com/gw/mtop\.alibaba\.advertisementservice\.getadv/ data-type=text data="" status-code=200
+^https?://acs\.m\.taobao\.com/gw/mtop\.damai\.wireless\.home\.welcome/ data-type=text data="" status-code=200
+^https?://acs\.m\.taobao\.com/gw/mtop\.film\.mtopadvertiseapi\.(queryadvertise|queryloadingbanner)/ data-type=text data="" status-code=200
+^https?://amap-aos-info-nogw\.amap\.com/ws/aos/alimama/ data-type=text data="" status-code=200
+^https?:\/\/apps\.api\.ke\.com\/config\/config\/(bootpage|getactivityconfig) data-type=text data="" status-code=200
+^https?://res\.xiaojukeji\.com\/resapi\/activity\/mget data-type=text data="" status-code=200
+^https?:\/\/res\.xiaojukeji\.com\/resapi\/activity\/get(Ruled|Preload|PasMultiNotices) data-type=text data="" status-code=200
+^https?:\/\/acs\.m\.taobao\.com\/gw\/mtop\.damai\.mec\.popup\.get data-type=text data="" status-code=200
+^https?:\/\/adv\.ccb\.com\/ebda\/ctm_adv data-type=text data="" status-code=200
+^https?:\/\/ad\.lofter\.com\/.*yitou\/madr data-type=text data="" status-code=200
+^https?:\/\/img\.meituan\.net\/(adunion|display|midas)\/\w+\.(gif|jpg|jpg\.webp)$ data-type=text data="" status-code=200
+^https?:\/\/p\d\.meituan\.net\/(bizad|wmbanner)\/\w+\.jpg data-type=text data="" status-code=200
+^https?:\/\/img\.meituan\.net\/(bizad|brandCpt)\/\w+\.(png|jpg) data-type=text data="" status-code=200
+^https?:\/\/.*\.meituan\.com\/api\/v\d\/(openscreen\?ad|appstatus\?ad|loadInfo\?|startpicture) data-type=text data="" status-code=200
+^https?:\/\/open\.taou\.com\/maimai\/launch_ad data-type=text data="" status-code=200
+^https?:\/\/api\.taou\.com\/sdk\/global\/splash_ad data-type=text data="" status-code=200
+^https?:\/\/bbs-api\.miyoushe\.com\/apihub\/api\/getAppSplash data-type=text data="" status-code=200
+^https?:\/\/guide-acs\.m\.taobao\.com\/gw\/mtop\.taobao\.wireless\.home\.splash\.awesome\.get data-type=text data="" status-code=200
+^https:\/\/ma-adx\.ctrip\.com\/_ma\.gif data-type=text data="" status-code=200
+^https?:\/\/shop-api\.retail\.mi\.com\/mtop\/navi\/skywheel\/mishop\/splash data-type=text data="" status-code=200
+^https?:\/\/acs\.m\.goofish\.com\/gw\/mtop.*splash\.ads data-type=text data="" status-code=200
+^https?:\/\/.*\.amap\.com\/ws\/aos\/alimama\/splash_screen data-type=text data="" status-code=200
+^https?:\/\/api\.weibo\.cn\/\d\/ad\/preload data-type=text data="{}" status-code=200 header="Content-Type:application/json"
+^https?:\/\/boot.*weibo\.com\/v\d\/ad\/realtime data-type=text data="" status-code=200
+^https?:\/\/[a-z]+\.xiaohongshu\.com\/api\/sns\/v\d+\/system_service\/splash(?:\?|$) data-type=text data="" status-code=200
+^https?:\/\/[a-z]+\.xiaohongshu\.com\/api\/sns\/v\d+\/(tag\/)?ads data-type=text data="" status-code=200
+
+[Script]
+Adblock.smzdm_json2=type=http-response,pattern=^https?:\/\/app-api\.smzdm\.com\/util\/loading,requires-body=1,script-path=https://raw.githubusercontent.com/ddgksf2013/Scripts/314f61060a4c72c8a8b9f6b2ff457c8d35abbdac/smzdm_json.js
+Adblock.smzdm_json3=type=http-response,pattern=^https?:\/\/.*zdmimg\.com\/cpm\/api\/v\d\/advert_distribution\/get_all_advertise,requires-body=1,script-path=https://raw.githubusercontent.com/ddgksf2013/Scripts/314f61060a4c72c8a8b9f6b2ff457c8d35abbdac/smzdm_json.js
+Adblock.smzdm_json4=type=http-response,pattern=^https?:\/\/homepage-api\.smzdm\.com\/v3\/home,requires-body=1,script-path=https://raw.githubusercontent.com/ddgksf2013/Scripts/314f61060a4c72c8a8b9f6b2ff457c8d35abbdac/smzdm_json.js
+Adblock.smzdm_json5=type=http-response,pattern=^https?:\/\/haojia-api\.smzdm\.com\/home\/list,requires-body=1,script-path=https://raw.githubusercontent.com/ddgksf2013/Scripts/314f61060a4c72c8a8b9f6b2ff457c8d35abbdac/smzdm_json.js
+Adblock.smzdm_json6=type=http-response,pattern=^https?:\/\/haojia\.m\.smzdm\.com\/detail_modul\/article_releated_modul,requires-body=1,script-path=https://raw.githubusercontent.com/ddgksf2013/Scripts/314f61060a4c72c8a8b9f6b2ff457c8d35abbdac/smzdm_json.js
+Adblock.smzdm_json7=type=http-response,pattern=^https?:\/\/baike-api\.smzdm\.com\/home_v3\/list,requires-body=1,script-path=https://raw.githubusercontent.com/ddgksf2013/Scripts/314f61060a4c72c8a8b9f6b2ff457c8d35abbdac/smzdm_json.js
+Adblock.smzdm_json8=type=http-response,pattern=^https?:\/\/s-api\.smzdm\.com\/sou\/list_v10,requires-body=1,script-path=https://raw.githubusercontent.com/ddgksf2013/Scripts/314f61060a4c72c8a8b9f6b2ff457c8d35abbdac/smzdm_json.js
+Adblock.smzdm_json10=type=http-response,pattern=^https?:\/\/zhiyou\.m\.smzdm\.com\/user\/vip\/ajax_get_banner,requires-body=1,script-path=https://raw.githubusercontent.com/ddgksf2013/Scripts/314f61060a4c72c8a8b9f6b2ff457c8d35abbdac/smzdm_json.js
+Adblock.12306=type=http-response,pattern=^https?:\/\/ad\.12306\.cn\/ad\/ser\/getAdList,requires-body=1,script-path=https://raw.githubusercontent.com/ddgksf2013/Scripts/314f61060a4c72c8a8b9f6b2ff457c8d35abbdac/12306.js
+Adblock.startup=type=http-response,pattern=^https?:\/\/api\.m\.jd\.com\/api\?functionId=delivery_show,requires-body=1,script-path=https://raw.githubusercontent.com/ddgksf2013/Scripts/314f61060a4c72c8a8b9f6b2ff457c8d35abbdac/startup.js
+Adblock.coolapk=type=http-response,pattern=^https?:\/\/api\.coolapk\.com\/v6\/(feed\/(replyList|detail)|main\/indexV8|dataList),requires-body=1,script-path=https://raw.githubusercontent.com/ddgksf2013/Scripts/314f61060a4c72c8a8b9f6b2ff457c8d35abbdac/coolapk.js
+Adblock.coolapk2=type=http-response,pattern=^https?:\/\/api\.coolapk\.com\/v6\/main\/init,requires-body=1,script-path=https://raw.githubusercontent.com/ddgksf2013/Scripts/314f61060a4c72c8a8b9f6b2ff457c8d35abbdac/coolapk.js
+Adblock.quark=type=http-response,pattern=^https?:\/\/open-cms-api\.(uc|quark)\.cn\/open-cms,requires-body=1,script-path=https://raw.githubusercontent.com/ddgksf2013/Scripts/314f61060a4c72c8a8b9f6b2ff457c8d35abbdac/quark.js
+Adblock.zhihu_openads=type=http-response,pattern=^https?:\/\/api\.zhihu\.com\/commercial_api.*launch_v2,requires-body=1,script-path=https://raw.githubusercontent.com/ddgksf2013/Scripts/314f61060a4c72c8a8b9f6b2ff457c8d35abbdac/zhihu_openads.js
+Adblock.amap6=type=http-response,pattern=^https?:\/\/.*\.amap\.com\/ws\/valueadded\/alimama\/splash_screen,requires-body=1,script-path=https://raw.githubusercontent.com/ddgksf2013/Scripts/314f61060a4c72c8a8b9f6b2ff457c8d35abbdac/amap.js
+Adblock.netease.adblock11=type=http-response,pattern=^https?:\/\/interface(\d)?\.music\.163\.com\/e?api\/ad\/loading\/get,requires-body=1,script-path=https://gist.githubusercontent.com/ddgksf2013/4f53b7c6083678df25fecc8ff68b52c4/raw/dbbc85975ab0e2d4b7494b594fa0d85e69709248/netease.adblock.js
+Adblock.netease.adblock12=type=http-response,pattern=^https?:\/\/interface(\d)?\.music\.163\.com\/e?api\/ad\/loading\/current,requires-body=1,script-path=https://gist.githubusercontent.com/ddgksf2013/4f53b7c6083678df25fecc8ff68b52c4/raw/dbbc85975ab0e2d4b7494b594fa0d85e69709248/netease.adblock.js
+Adblock.netease.adblock13=type=http-response,pattern=^https?:\/\/interface(\d)?\.music\.163\.com\/e?api\/ad\/get,requires-body=1,script-path=https://gist.githubusercontent.com/ddgksf2013/4f53b7c6083678df25fecc8ff68b52c4/raw/dbbc85975ab0e2d4b7494b594fa0d85e69709248/netease.adblock.js
+Adblock.netease.adblock19=type=http-response,pattern=^https?:\/\/interface(\d)?\.music\.163\.com\/e?api\/delivery\/deliver,requires-body=1,script-path=https://gist.githubusercontent.com/ddgksf2013/4f53b7c6083678df25fecc8ff68b52c4/raw/dbbc85975ab0e2d4b7494b594fa0d85e69709248/netease.adblock.js
+Adblock.netease.adblock20=type=http-response,pattern=^https?:\/\/interface(\d)?\.music\.163\.com\/e?api\/delivery\/batch-deliver,requires-body=1,script-path=https://gist.githubusercontent.com/ddgksf2013/4f53b7c6083678df25fecc8ff68b52c4/raw/dbbc85975ab0e2d4b7494b594fa0d85e69709248/netease.adblock.js
+Adblock.weibo_json=type=http-response,pattern=^https?:\/\/api\.weibo\.cn\/\d\/statuses\/container_detail,requires-body=1,script-path=https://raw.githubusercontent.com/ddgksf2013/Scripts/314f61060a4c72c8a8b9f6b2ff457c8d35abbdac/weibo_json.js
+Adblock.weibo_json3=type=http-response,pattern=^https?:\/\/boot.*weibo\.com\/v\d\/ad\/preload,requires-body=1,script-path=https://raw.githubusercontent.com/ddgksf2013/Scripts/314f61060a4c72c8a8b9f6b2ff457c8d35abbdac/weibo_json.js
+Adblock.weibo_json4=type=http-response,pattern=^https?:\/\/api\.weibo\.cn\/\d\/\w{5}\/(statuses_unread_hot_timeline|timeline),requires-body=1,script-path=https://raw.githubusercontent.com/ddgksf2013/Scripts/314f61060a4c72c8a8b9f6b2ff457c8d35abbdac/weibo_json.js
+Adblock.weibo_json5=type=http-response,pattern=^https?:\/\/api\.weibo\.cn\/\d\/video\/tiny_stream_mid_detail,requires-body=1,script-path=https://raw.githubusercontent.com/ddgksf2013/Scripts/314f61060a4c72c8a8b9f6b2ff457c8d35abbdac/weibo_json.js
+Adblock.weibo_json6=type=http-response,pattern=^https?:\/\/m?api\.weibo\.c(n|om)\/\d\/\w{5}\/cardlist,requires-body=1,script-path=https://raw.githubusercontent.com/ddgksf2013/Scripts/314f61060a4c72c8a8b9f6b2ff457c8d35abbdac/weibo_json.js
+Adblock.weibo_json9=type=http-response,pattern=^https?:\/\/m?api\.weibo\.c(n|om)\/\d\/(searchall|page\?|0flowpage),requires-body=1,script-path=https://raw.githubusercontent.com/ddgksf2013/Scripts/314f61060a4c72c8a8b9f6b2ff457c8d35abbdac/weibo_json.js
+Adblock.weibo_json10=type=http-response,pattern=^https?:\/\/m?api\.weibo\.c(n|om)\/\d\/statuses/(unread_)?friends(/|_)timeline,requires-body=1,script-path=https://raw.githubusercontent.com/ddgksf2013/Scripts/314f61060a4c72c8a8b9f6b2ff457c8d35abbdac/weibo_json.js
+Adblock.weibo_json11=type=http-response,pattern=^https?:\/\/m?api\.weibo\.c(n|om)\/\d\/groups/timeline,requires-body=1,script-path=https://raw.githubusercontent.com/ddgksf2013/Scripts/314f61060a4c72c8a8b9f6b2ff457c8d35abbdac/weibo_json.js
+Adblock.weibo_json12=type=http-response,pattern=^https?:\/\/m?api\.weibo\.c(n|om)\/\d\/statuses/(container_timeline|unread_hot_timeline|extend|video_mixtimeline|unread_topic_timeline),requires-body=1,script-path=https://raw.githubusercontent.com/ddgksf2013/Scripts/314f61060a4c72c8a8b9f6b2ff457c8d35abbdac/weibo_json.js
+Adblock.weibo_json13=type=http-response,pattern=^https?:\/\/m?api\.weibo\.c(n|om)\/\d\/profile/(me|container_timeline),requires-body=1,script-path=https://raw.githubusercontent.com/ddgksf2013/Scripts/314f61060a4c72c8a8b9f6b2ff457c8d35abbdac/weibo_json.js
+Adblock.weibo_json14=type=http-response,pattern=^https?:\/\/m?api\.weibo\.c(n|om)\/\d\/video/(community_tab|remind_info|tiny_stream_video_list),requires-body=1,script-path=https://raw.githubusercontent.com/ddgksf2013/Scripts/314f61060a4c72c8a8b9f6b2ff457c8d35abbdac/weibo_json.js
+Adblock.weibo_json15=type=http-response,pattern=^https?:\/\/m?api\.weibo\.c(n|om)\/\d\/search/(finder|container_timeline|container_discover),requires-body=1,script-path=https://raw.githubusercontent.com/ddgksf2013/Scripts/314f61060a4c72c8a8b9f6b2ff457c8d35abbdac/weibo_json.js
+Adblock.weibo_json16=type=http-response,pattern=^https?:\/\/m?api\.weibo\.c(n|om)\/\d\/(checkin/show|\!/live/media_homelist|container/get_item),requires-body=1,script-path=https://raw.githubusercontent.com/ddgksf2013/Scripts/314f61060a4c72c8a8b9f6b2ff457c8d35abbdac/weibo_json.js
+Adblock.weibo_json17=type=http-response,pattern=^https?:\/\/m?api\.weibo\.c(n|om)\/\d\/cardlist,requires-body=1,script-path=https://raw.githubusercontent.com/ddgksf2013/Scripts/314f61060a4c72c8a8b9f6b2ff457c8d35abbdac/weibo_json.js
+Adblock.weibo_json20=type=http-response,pattern=^https?://(sdk|wb)app\.uve\.weibo\.com(/interface/sdk/sdkad.php|/wbapplua/wbpullad.lua),requires-body=1,script-path=https://raw.githubusercontent.com/ddgksf2013/Scripts/314f61060a4c72c8a8b9f6b2ff457c8d35abbdac/weibo_json.js
+Adblock.redbook.ads=type=http-response,pattern=^https?:\/\/[a-z]+\.xiaohongshu\.com\/api\/sns\/v\d+\/note\/tabfeed,requires-body=1,script-path=https://royal-block-f6b1.q00.workers.dev/scripts/redbook.ads.js
+Adblock.redbook.ads4=type=http-response,pattern=^https?:\/\/[a-z]+\.xiaohongshu\.com\/api\/sns\/v\d+\/search\/notes\?,requires-body=1,script-path=https://royal-block-f6b1.q00.workers.dev/scripts/redbook.ads.js
+Adblock.redbook.ads5=type=http-response,pattern=^https?:\/\/[a-z]+\.xiaohongshu\.com\/api\/sns\/v\d+\/note\/widgets,requires-body=1,script-path=https://royal-block-f6b1.q00.workers.dev/scripts/redbook.ads.js
+Adblock.redbook.ads6=type=http-response,pattern=^https?:\/\/[a-z]+\.xiaohongshu\.com\/api\/sns\/v\d+\/note\/redtube\?,requires-body=1,script-path=https://royal-block-f6b1.q00.workers.dev/scripts/redbook.ads.js
+Adblock.redbook.ads7=type=http-response,pattern=^https?:\/\/[a-z]+\.xiaohongshu\.com\/api\/sns\/v\d+\/note\/videofeed\?,requires-body=1,script-path=https://royal-block-f6b1.q00.workers.dev/scripts/redbook.ads.js
+Adblock.redbook.ads8=type=http-response,pattern=^https?:\/\/[a-z]+\.xiaohongshu\.com\/api\/sns\/v\d+\/note\/feed\?,requires-body=1,script-path=https://royal-block-f6b1.q00.workers.dev/scripts/redbook.ads.js
+Adblock.redbook.ads9=type=http-response,pattern=^https?:\/\/[a-z]+\.xiaohongshu\.com\/api\/sns\/v\d+\/note\/imagefeed,requires-body=1,script-path=https://royal-block-f6b1.q00.workers.dev/scripts/redbook.ads.js
+Adblock.redbook.ads10=type=http-response,pattern=^https?:\/\/[a-z]+\.xiaohongshu\.com\/api\/sns\/v\d+\/system_service\/splash_config,requires-body=1,script-path=https://royal-block-f6b1.q00.workers.dev/scripts/redbook.ads.js
+Adblock.redbook.ads11=type=http-response,pattern=^https?:\/\/[a-z]+\.xiaohongshu\.com\/api\/sns\/v\d+\/homefeed\?,requires-body=1,script-path=https://royal-block-f6b1.q00.workers.dev/scripts/redbook.ads.js
+Adblock.pixivAds=type=http-response,pattern=^https?:\/\/oauth\.secure\.pixiv\.net\/(auth\/token),requires-body=1,script-path=https://raw.githubusercontent.com/ddgksf2013/Scripts/314f61060a4c72c8a8b9f6b2ff457c8d35abbdac/pixivAds.js
+Adblock.zheye.min3=type=http-response,pattern=^https:\/\/(api|web-render)\.zhihu\.com\/topstory\/recommend,requires-body=1,script-path=https://gist.githubusercontent.com/blackmatrix7/f5f780d0f56b319b6ad9848fd080bb18/raw/463eb366a6d63af47fae9da8df9d20c836936c48/zheye.min.js
+Adblock.zheye.min4=type=http-response,pattern=^https:\/\/api\.zhihu\.com\/questions\/\d+\/feeds?,requires-body=1,script-path=https://gist.githubusercontent.com/blackmatrix7/f5f780d0f56b319b6ad9848fd080bb18/raw/463eb366a6d63af47fae9da8df9d20c836936c48/zheye.min.js
+Adblock.zheye.min5=type=http-response,pattern=^https?:\/\/api\.zhihu\.com\/next-render,requires-body=1,script-path=https://gist.githubusercontent.com/blackmatrix7/f5f780d0f56b319b6ad9848fd080bb18/raw/463eb366a6d63af47fae9da8df9d20c836936c48/zheye.min.js
+Adblock.zheye.min7=type=http-response,pattern=^https?:\/\/api\.zhihu\.com\/(comment_v5\/)?(answers|comments?|articles|pins)\/\d+\/(root_|child_)?comments?,requires-body=1,script-path=https://gist.githubusercontent.com/blackmatrix7/f5f780d0f56b319b6ad9848fd080bb18/raw/463eb366a6d63af47fae9da8df9d20c836936c48/zheye.min.js
+Adblock.zheye.min8=type=http-response,pattern=^https:\/\/(page-info|api)\.zhihu\.com\/answers\/v2\/\d+,requires-body=1,script-path=https://gist.githubusercontent.com/blackmatrix7/f5f780d0f56b319b6ad9848fd080bb18/raw/463eb366a6d63af47fae9da8df9d20c836936c48/zheye.min.js
+Adblock.zheye.min9=type=http-response,pattern=^https:\/\/api\.zhihu\.com\/articles\/v\d\/\d+,requires-body=1,script-path=https://gist.githubusercontent.com/blackmatrix7/f5f780d0f56b319b6ad9848fd080bb18/raw/463eb366a6d63af47fae9da8df9d20c836936c48/zheye.min.js
+Adblock.zheye.min15=type=http-response,pattern=^https?:\/\/www\.zhihu\.com\/api\/v4\/comment_v5\/answers\/\d+\/abstract_comment\?,requires-body=1,script-path=https://gist.githubusercontent.com/blackmatrix7/f5f780d0f56b319b6ad9848fd080bb18/raw/463eb366a6d63af47fae9da8df9d20c836936c48/zheye.min.js
+Adblock.tieba-json=type=http-response,pattern=^https?:\/\/(tiebac|c\.tieba)\.baidu\.com\/(c\/(s\/sync|f\/(ad\/getSplashAd|frs\/(page|threadlist|generalTabList)|pb\/(pic)?page|excellent\/personalized))$|tiebaads\/commonbatch\?),requires-body=1,script-path=https://raw.githubusercontent.com/app2smile/rules/df6366a7024e0b3f0aa3510c5b791eea6f3cba89/js/tieba-json.js
+Adblock.tieba-proto=type=http-response,pattern=^https?:\/\/(tiebac|c\.tieba)\.baidu\.com\/c\/(b\/ad\/adBid|f\/(frs\/(page|threadlist|generalTabList)|ad\/getFeedAd|pb\/page|excellent\/personalized))\?cmd,requires-body=1,script-path=https://raw.githubusercontent.com/app2smile/rules/df6366a7024e0b3f0aa3510c5b791eea6f3cba89/js/tieba-proto.js,binary-body-mode=1,max-size=2097152
+Adblock.Bili.feed.index.request.json = type=http-request,pattern=^https?:\/\/app\.bili(bili\.com|api\.net)\/x\/v2\/feed\/index\?, engine=webview, script-path=https://github.com/Biliverse/ADBlock/releases/download/v0.7.3/request.bundle.js, argument=Splash="true"&Feed.AD="true"&Feed.Activity="false"&Feed.Vertical="false"&Feed.BlockUpLiveList=""&Feed.Story="true"&Feed.StoryCommercial="false"&Search.AD="false"&Search.Tracking="false"&Search.HotSearch="false"&PGC.AD="false"&Xlive.AD="false"&Xlive.RemoveTrackingCallbacks="false"&Xlive.RemovePreloadTracking="false"&Dynamic.HotTopics="false"&Dynamic.MostVisited="false"&Dynamic.MostVisitedLiveOnly="false"&Dynamic.AdCard="false"&Dynamic.PersonalAdCard="false"&View.AD="false"&DM.Command="false"&DM.Colorful="false"&DM.Airborne="false"&Reply.AD="false"&Reply.CommercialLinks="false"&Reply.SubjectDescriptionCommercial="false"&Privacy.Tracking="false"&Privacy.BlockBiliCommercial="false"&Privacy.BlockThirdParty="false"&Privacy.Strict="false"&Storage="Argument"&LogLevel="WARN"
+Adblock.Bili.response.json = type=http-response, pattern=^https?:\/\/app\.bili(bili\.com|api\.net)\/x\/v2\/(splash\/(brand\/list|event\/list2|list|show)|feed\/index(\/(relate\/)?story)?), requires-body=1, engine=webview, script-path=https://github.com/Biliverse/ADBlock/releases/download/v0.7.3/response.bundle.js, max-size=2097152, argument=Splash="true"&Feed.AD="true"&Feed.Activity="false"&Feed.Vertical="false"&Feed.BlockUpLiveList=""&Feed.Story="true"&Feed.StoryCommercial="false"&Search.AD="false"&Search.Tracking="false"&Search.HotSearch="false"&PGC.AD="false"&Xlive.AD="false"&Xlive.RemoveTrackingCallbacks="false"&Xlive.RemovePreloadTracking="false"&Dynamic.HotTopics="false"&Dynamic.MostVisited="false"&Dynamic.MostVisitedLiveOnly="false"&Dynamic.AdCard="false"&Dynamic.PersonalAdCard="false"&View.AD="false"&DM.Command="false"&DM.Colorful="false"&DM.Airborne="false"&Reply.AD="false"&Reply.CommercialLinks="false"&Reply.SubjectDescriptionCommercial="false"&Privacy.Tracking="false"&Privacy.BlockBiliCommercial="false"&Privacy.BlockThirdParty="false"&Privacy.Strict="false"&Storage="Argument"&LogLevel="WARN"
+
+[MITM]
+hostname = %APPEND% app.58.com, pan.baidu.com, issuecdn.baidupcs.com, c.tieba.baidu.com, tiebac.baidu.com, app.api.ke.com, apps.api.ke.com, m.ctrip.com, ma-adx.ctrip.com, api.m.jd.com, bdsp-x.jd.com, dsp-x.jd.com, api.m.mi.com, shop-api.retail.mi.com, wmapi.meituan.com, *.meituan.com, flowplus.meituan.net, img.meituan.net, p*.meituan.net, api.pinduoduo.com, api.yangkeduo.com, api.smzdm.com, app-api.smzdm.com, *.zdmimg.com, homepage-api.smzdm.com, haojia-api.smzdm.com, haojia.m.smzdm.com, baike-api.smzdm.com, s-api.smzdm.com, zhiyou.m.smzdm.com, mbasecc.bas.cmbchina.com, api.zhihu.com, www.zhihu.com, page-info.zhihu.com, web-render.zhihu.com, p0.pipi.cn, m.mynj.cn, api.weibo.cn, mapi.weibo.cn, api.weibo.com, mapi.weibo.com, boot*.weibo.com, boot.biz.weibo.com, *.uve.weibo.com, acs.m.taobao.com, guide-acs.m.taobao.com, amap-aos-info-nogw.amap.com, m*.amap.com, *.xiaohongshu.com, res.xiaojukeji.com, adv.ccb.com, ad.lofter.com, open.taou.com, api.taou.com, bbs-api.miyoushe.com, acs.m.goofish.com, ad.12306.cn, api.coolapk.com, open-cms-api.uc.cn, open-cms-api.quark.cn, interface*.music.163.com, oauth.secure.pixiv.net, app.bilibili.com, app.biliapi.net

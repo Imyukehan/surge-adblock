@@ -1,0 +1,102 @@
+{
+  "module_version": "2026.10.10",
+  "rule_source": "https://yfamilys.com/module/adultra.sgmodule",
+  "scripts": [
+    {
+      "name": "smzdm_json.js",
+      "url": "https://raw.githubusercontent.com/ddgksf2013/Scripts/314f61060a4c72c8a8b9f6b2ff457c8d35abbdac/smzdm_json.js",
+      "sha256": "cbcabf770447117a66358314950a4233448eeb86274ccfb96d148294d327eece",
+      "pinned": true
+    },
+    {
+      "name": "12306.js",
+      "url": "https://raw.githubusercontent.com/ddgksf2013/Scripts/314f61060a4c72c8a8b9f6b2ff457c8d35abbdac/12306.js",
+      "sha256": "4723bc2236835eea0a8b79529c832a9af1cfd37fa1b160becb3a4b51f9067cd5",
+      "pinned": true
+    },
+    {
+      "name": "startup.js",
+      "url": "https://raw.githubusercontent.com/ddgksf2013/Scripts/314f61060a4c72c8a8b9f6b2ff457c8d35abbdac/startup.js",
+      "sha256": "94c0f1d3a0e6c9e0188a78d9cc937c8fdcf7c06ce87a3225ae37c3a3468f21aa",
+      "pinned": true
+    },
+    {
+      "name": "coolapk.js",
+      "url": "https://raw.githubusercontent.com/ddgksf2013/Scripts/314f61060a4c72c8a8b9f6b2ff457c8d35abbdac/coolapk.js",
+      "sha256": "79b28bcbeb4b7b150a21ed20d7d50d9cee2bb91ff5110e9f34dc3be54b0991e4",
+      "pinned": true
+    },
+    {
+      "name": "quark.js",
+      "url": "https://raw.githubusercontent.com/ddgksf2013/Scripts/314f61060a4c72c8a8b9f6b2ff457c8d35abbdac/quark.js",
+      "sha256": "a80632f4308d8971f2ee1b42cb1b2c3b72c90ec5619ed33849fcc0fcbf0f1bcc",
+      "pinned": true
+    },
+    {
+      "name": "zhihu_openads.js",
+      "url": "https://raw.githubusercontent.com/ddgksf2013/Scripts/314f61060a4c72c8a8b9f6b2ff457c8d35abbdac/zhihu_openads.js",
+      "sha256": "3f12b578e30b4f6f7d54fd0091789491c444ed9cc2353b91406927438b201dc7",
+      "pinned": true
+    },
+    {
+      "name": "amap.js",
+      "url": "https://raw.githubusercontent.com/ddgksf2013/Scripts/314f61060a4c72c8a8b9f6b2ff457c8d35abbdac/amap.js",
+      "sha256": "936aaaf97cf69b8a5a25ba49303c0470a16ac48851e8bf58080ff9f129ff7c48",
+      "pinned": true
+    },
+    {
+      "name": "netease.adblock.js",
+      "url": "https://gist.githubusercontent.com/ddgksf2013/4f53b7c6083678df25fecc8ff68b52c4/raw/dbbc85975ab0e2d4b7494b594fa0d85e69709248/netease.adblock.js",
+      "sha256": "6ba468eb994e3843d69563f8f3b31c2d63a62a68d60fc3a1fd61947c1546936f",
+      "pinned": true
+    },
+    {
+      "name": "weibo_json.js",
+      "url": "https://raw.githubusercontent.com/ddgksf2013/Scripts/314f61060a4c72c8a8b9f6b2ff457c8d35abbdac/weibo_json.js",
+      "sha256": "1714a128eb1e2cc5c333e93bd66c860cbaa6a76bae0a3c9d15d5138fcd30b151",
+      "pinned": true
+    },
+    {
+      "name": "redbook.ads.js",
+      "url": "https://royal-block-f6b1.q00.workers.dev/scripts/redbook.ads.js",
+      "sha256": "f75ed15254d4bd23454fd0019cf340b581ad60cf8bb2c355e09e0e32a98fc74d",
+      "pinned": false
+    },
+    {
+      "name": "pixivAds.js",
+      "url": "https://raw.githubusercontent.com/ddgksf2013/Scripts/314f61060a4c72c8a8b9f6b2ff457c8d35abbdac/pixivAds.js",
+      "sha256": "249eabc913b8210c0ccb00ab1cfb1094a55a771d33cd0c69225c6d0cb2504359",
+      "pinned": true
+    },
+    {
+      "name": "zheye.min.js",
+      "url": "https://gist.githubusercontent.com/blackmatrix7/f5f780d0f56b319b6ad9848fd080bb18/raw/463eb366a6d63af47fae9da8df9d20c836936c48/zheye.min.js",
+      "sha256": "41863c4c0ce5eefbdda9a5a96d7605bde70a89a9cc24ee0875f3d751aed2f757",
+      "pinned": true
+    },
+    {
+      "name": "tieba-json.js",
+      "url": "https://raw.githubusercontent.com/app2smile/rules/df6366a7024e0b3f0aa3510c5b791eea6f3cba89/js/tieba-json.js",
+      "sha256": "91040c0d5bf906357829d8df344a3bdce00b59e6c24f255e54a2ef7a46d04c69",
+      "pinned": true
+    },
+    {
+      "name": "tieba-proto.js",
+      "url": "https://raw.githubusercontent.com/app2smile/rules/df6366a7024e0b3f0aa3510c5b791eea6f3cba89/js/tieba-proto.js",
+      "sha256": "6015d737870b6d89c38a0181479ed715e07d11b5a2c3746f96f95e25835e8610",
+      "pinned": true
+    },
+    {
+      "name": "bilibili-request-0.7.3.js",
+      "url": "https://github.com/Biliverse/ADBlock/releases/download/v0.7.3/request.bundle.js",
+      "sha256": "8d97bf10cfb408933db0cd8c84e7f372fc50006d9b9985e021339f2e11785bef",
+      "pinned": true
+    },
+    {
+      "name": "bilibili-response-0.7.3.js",
+      "url": "https://github.com/Biliverse/ADBlock/releases/download/v0.7.3/response.bundle.js",
+      "sha256": "04100a2075988159b9400ace821c5c6ed4493fba02cd7c03b6f8c5600cf8d855",
+      "pinned": true
+    }
+  ]
+}
