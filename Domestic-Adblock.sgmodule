@@ -4,7 +4,7 @@
 #!version=2026.10.11.2
 #!homepage=https://github.com/Imyukehan/surge-adblock
 #!author=Imyukehan; upstream: Biliverse, yfamilys, ddgksf2013, app2smile, blackmatrix7, deezertidal
-# B站处理基于 Biliverse ADBlock 0.7.3，仅保留开屏与首页广告过滤。
+# B站处理基于 Biliverse ADBlock 0.7.3，保留开屏、首页与播放暂停广告过滤。
 # 基础规则精简自 https://yfamilys.com/module/adultra.sgmodule (2026-10-10)。
 # 脚本从原作者地址加载，来源与内容校验值见仓库 sources.json。
 # 不处理起点奖励广告；不包含通用广告联盟域名封锁。

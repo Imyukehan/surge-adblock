@@ -61,7 +61,7 @@ python3 tests/test_bili_splash.py
 
 检查远程依赖地址、脚本唯一性、正则表达式和已排除的功能；本机安装 Surge 时还会执行配置语法检查。
 
-开屏回归检查需要 `jq`，验证广告列表被清空、正常字段和错误响应保持原样，以及规则不匹配首页推荐接口。
+开屏回归检查需要 `jq`，验证广告列表被清空、正常字段和错误响应保持原样，以及规则不匹配首页推荐接口。暂停接口的二进制回归检查可运行 `node tests/test_bili_pause.cjs /path/to/response.bundle.js`；传入的文件必须与 `sources.json` 固定的 SHA256 相符。
 
 ## 更新记录
 
