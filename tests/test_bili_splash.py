@@ -31,12 +31,18 @@ def rewrite(body):
 for message in ("0", "OK"):
     body = {"code": 0, "message": message, "ttl": 1, "data": {
         "list": [{"id": 123, "card_type": 39, "thumb": "https://example.invalid/ad.jpg"}],
-        "max_time": 4, "min_interval": 14400, "splash_request_id": "fixture",
+        "max_time": 30, "min_interval": 3600, "pull_interval": 900,
+        "keep_ids": [101, 102, 103], "splash_request_id": "fixture",
         "other_config": {"enabled": True},
     }}
     expected = json.loads(json.dumps(body))
     expected["data"]["list"] = []
+    expected["data"]["keep_ids"] = []
     assert rewrite(body) == expected
+
+for keep_ids in ([101, 102], [], None):
+    body = {"code": 0, "message": "OK", "data": {"list": [], "keep_ids": keep_ids, "max_time": 30}}
+    assert rewrite(body) == {"code": 0, "message": "OK", "data": {"list": [], "keep_ids": [], "max_time": 30}}
 
 for body in (
     {"code": 0, "data": {"list": []}},
@@ -45,4 +51,4 @@ for body in (
     {"code": -400, "message": "request error"},
 ):
     assert rewrite(body) == body
-print("OK: splash lists cleared; other fields, error responses and feed routing preserved")
+print("OK: splash lists and retained IDs cleared; other fields, error responses and feed routing preserved")

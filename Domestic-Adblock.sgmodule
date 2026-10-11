@@ -1,7 +1,7 @@
 #!name=国内常用网站与 App 去广告
 #!desc=适用于国内常用网站与 App 的 Surge 去广告模块。精简 Ultra 并整合 B站开屏、首页与暂停去广告，剔除改区、网站跳转、解锁等附加规则。
 #!category=去广告
-#!version=2026.10.11.2
+#!version=2026.10.12.1
 #!homepage=https://github.com/Imyukehan/surge-adblock
 #!author=Imyukehan; upstream: Biliverse, yfamilys, ddgksf2013, app2smile, blackmatrix7, deezertidal
 # B站处理基于 Biliverse ADBlock 0.7.3，保留开屏、首页与播放暂停广告过滤。
@@ -67,8 +67,8 @@
 ^https?:\/\/[a-z]+\.xiaohongshu\.com\/api\/sns\/v\d+\/(tag\/)?ads data-type=text data="" status-code=200
 
 [Body Rewrite]
-# Biliverse 0.7.3 未处理开屏 data.list；先清空列表，再交给原脚本处理其他字段。
-http-response-jq ^https?://app\.bili(bili\.com|api\.net)/x/v2/splash/(brand/list|event/list2|list|show)(\?|$) 'if (.data | type) == "object" then (if .data | has("list") then .data.list = [] else . end) else . end'
+# Biliverse 0.7.3 未处理开屏 data.list / keep_ids；清空广告列表和保留 ID，再处理其他字段。
+http-response-jq ^https?://app\.bili(bili\.com|api\.net)/x/v2/splash/(brand/list|event/list2|list|show)(\?|$) 'if (.data | type) == "object" then (reduce ["list", "keep_ids"][] as $key (. ; if .data | has($key) then .data[$key] = [] else . end)) else . end'
 
 [Script]
 Adblock.smzdm_json2=type=http-response,pattern=^https?:\/\/app-api\.smzdm\.com\/util\/loading,requires-body=1,script-path=https://raw.githubusercontent.com/ddgksf2013/Scripts/314f61060a4c72c8a8b9f6b2ff457c8d35abbdac/smzdm_json.js

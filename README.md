@@ -61,9 +61,11 @@ python3 tests/test_bili_splash.py
 
 检查远程依赖地址、脚本唯一性、正则表达式和已排除的功能；本机安装 Surge 时还会执行配置语法检查。
 
-开屏回归检查需要 `jq`，验证广告列表被清空、正常字段和错误响应保持原样，以及规则不匹配首页推荐接口。暂停接口的二进制回归检查可运行 `node tests/test_bili_pause.cjs /path/to/response.bundle.js`；传入的文件必须与 `sources.json` 固定的 SHA256 相符。
+开屏回归检查需要 `jq`，验证广告列表及保留 ID 被清空、正常字段和错误响应保持原样，以及规则不匹配首页推荐接口。暂停接口的二进制回归检查可运行 `node tests/test_bili_pause.cjs /path/to/response.bundle.js`；传入的文件必须与 `sources.json` 固定的 SHA256 相符。
 
 ## 更新记录
+
+- 2026.10.12.1：开屏补丁同时清空 `data.keep_ids`。实测发现 `list` 已清空时，响应仍携带多个保留 ID；补齐这一遗漏，客户端持续开屏广告的改善效果仍需验证。
 
 - 2026.10.11.2：接入 Biliverse 原版 `PlayPause` 暂停广告处理，仅匹配暂停接口，不扩展到其他播放或评论接口。
 
