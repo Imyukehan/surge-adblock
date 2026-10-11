@@ -14,6 +14,8 @@ https://raw.githubusercontent.com/Imyukehan/surge-adblock/main/Domestic-Adblock.
 
 安装后勾选模块，并关闭或删除原来的 Ultra，避免同一接口重复匹配。需要启用 HTTP 重写、脚本和 MITM，并在相应设备上安装、信任 Surge 证书。
 
+B 站开屏列表补丁使用 Surge 内置 JQ 重写，需要 Surge iOS 5.14.0 / Mac 5.9.0 或更新版本。
+
 Mac 和 iPhone 可以使用同一个安装地址。发布修改后，在各设备上更新模块；模块启用状态不会跨设备同步。通过 Mac 网关接管的设备，HTTPS 去广告也需要客户端信任该 Mac 使用的证书。
 
 ## 覆盖范围
@@ -54,6 +56,13 @@ Maipo 的 `api.weibo.com` MITM 排除属于设备兼容设置，不放进公共�
 
 ```bash
 python3 tests/validate.py
+python3 tests/test_bili_splash.py
 ```
 
 检查远程依赖地址、脚本唯一性、正则表达式和已排除的功能；本机安装 Surge 时还会执行配置语法检查。
+
+开屏回归检查需要 `jq`，验证广告列表被清空、正常字段和错误响应保持原样，以及规则不匹配首页推荐接口。
+
+## 更新记录
+
+- 2026.10.11.1：补充清空 B 站开屏响应的 `data.list`，修复 Biliverse 0.7.3 只处理其他开屏字段的遗漏。保持原有首页过滤方式。此修改不能直接删除 App 已保存到本机的广告素材，隔夜首次启动效果仍需实测。
