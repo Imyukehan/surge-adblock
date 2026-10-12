@@ -1,7 +1,7 @@
 #!name=国内常用网站与 App 去广告
 #!desc=适用于国内常用网站与 App 的 Surge 去广告模块。精简 Ultra 并整合 B站开屏、首页与暂停去广告，剔除改区、网站跳转、解锁等附加规则。
 #!category=去广告
-#!version=2026.10.12.1
+#!version=2026.10.12.2
 #!homepage=https://github.com/Imyukehan/surge-adblock
 #!author=Imyukehan; upstream: Biliverse, yfamilys, ddgksf2013, app2smile, blackmatrix7, deezertidal
 # B站处理基于 Biliverse ADBlock 0.7.3，保留开屏、首页与播放暂停广告过滤。
@@ -9,7 +9,6 @@
 # 脚本从原作者地址加载，来源与内容校验值见仓库 sources.json。
 # 不处理起点奖励广告；不包含通用广告联盟域名封锁。
 # Mac 使用 Maipo 时，可单独排除 api.weibo.com 的 MITM。
-
 [URL Rewrite]
 ^https?://app\.58\.com/api/home/(advertising|appadv)/ _ reject
 ^https?://app\.58\.com/api/home/invite/popupAdv _ reject
@@ -37,16 +36,10 @@
 ^https?:\/\/sdkapp\.uve\.weibo\.com\/interface\/sdk\/sdkconfig\.php _ reject
 
 [Map Local]
-# 盒马：恢复 Ultra 的启动广告接口。
-^https?://acs-m\.freshippo\.com/gw/mtop\.wdk\.render\.querysinglepage(?:/|\?|$) data-type=text data="" status-code=200
-^https?://acs\.m\.taobao\.com/gw/mtop\.alibaba\.advertisementservice\.getadv/ data-type=text data="" status-code=200
-^https?://acs\.m\.taobao\.com/gw/mtop\.damai\.wireless\.home\.welcome/ data-type=text data="" status-code=200
-^https?://acs\.m\.taobao\.com/gw/mtop\.film\.mtopadvertiseapi\.(queryadvertise|queryloadingbanner)/ data-type=text data="" status-code=200
 ^https?://amap-aos-info-nogw\.amap\.com/ws/aos/alimama/ data-type=text data="" status-code=200
 ^https?:\/\/apps\.api\.ke\.com\/config\/config\/(bootpage|getactivityconfig) data-type=text data="" status-code=200
 ^https?://res\.xiaojukeji\.com\/resapi\/activity\/mget data-type=text data="" status-code=200
 ^https?:\/\/res\.xiaojukeji\.com\/resapi\/activity\/get(Ruled|Preload|PasMultiNotices) data-type=text data="" status-code=200
-^https?:\/\/acs\.m\.taobao\.com\/gw\/mtop\.damai\.mec\.popup\.get data-type=text data="" status-code=200
 ^https?:\/\/adv\.ccb\.com\/ebda\/ctm_adv data-type=text data="" status-code=200
 ^https?:\/\/ad\.lofter\.com\/.*yitou\/madr data-type=text data="" status-code=200
 ^https?:\/\/img\.meituan\.net\/(adunion|display|midas)\/\w+\.(gif|jpg|jpg\.webp)$ data-type=text data="" status-code=200
@@ -56,21 +49,67 @@
 ^https?:\/\/open\.taou\.com\/maimai\/launch_ad data-type=text data="" status-code=200
 ^https?:\/\/api\.taou\.com\/sdk\/global\/splash_ad data-type=text data="" status-code=200
 ^https?:\/\/bbs-api\.miyoushe\.com\/apihub\/api\/getAppSplash data-type=text data="" status-code=200
-^https?:\/\/guide-acs\.m\.taobao\.com\/gw\/mtop\.taobao\.wireless\.home\.splash\.awesome\.get data-type=text data="" status-code=200
 ^https:\/\/ma-adx\.ctrip\.com\/_ma\.gif data-type=text data="" status-code=200
 ^https?:\/\/shop-api\.retail\.mi\.com\/mtop\/navi\/skywheel\/mishop\/splash data-type=text data="" status-code=200
-^https?:\/\/acs\.m\.goofish\.com\/gw\/mtop.*splash\.ads data-type=text data="" status-code=200
 ^https?:\/\/.*\.amap\.com\/ws\/aos\/alimama\/splash_screen data-type=text data="" status-code=200
 ^https?:\/\/api\.weibo\.cn\/\d\/ad\/preload data-type=text data="{}" status-code=200 header="Content-Type:application/json"
 ^https?:\/\/boot.*weibo\.com\/v\d\/ad\/realtime data-type=text data="" status-code=200
 ^https?:\/\/[a-z]+\.xiaohongshu\.com\/api\/sns\/v\d+\/system_service\/splash(?:\?|$) data-type=text data="" status-code=200
 ^https?:\/\/[a-z]+\.xiaohongshu\.com\/api\/sns\/v\d+\/(tag\/)?ads data-type=text data="" status-code=200
 
+# 阿里系按 2026-10-10 Ultra 快照恢复；原 reject-200.txt 为两个空格。
+^https?://acs\.m\.taobao\.com/gw/mtop\.alibaba\.advertisementservice\.getadv/ data-type=text data="  " status-code=200
+^https?://cn-acs\.m\.cainiao\.com/gw/mtop\.cainiao\.guoguo\.nbnetflow\.ads\.(show|mshow)\.cn/ data-type=text data="  " status-code=200
+^https?://acs\.m\.taobao\.com/gw/mtop\.damai\.wireless\.home\.welcome/ data-type=text data="  " status-code=200
+^https?://(gw|heic)\.alicdn\.com/imgextra/\w{2}/[\w!]+-\d-tps-\d{3,4}-\d{4}\.jpg_(1\d{3}|9\d{2})x(1\d{3}|9\d{2})q\d0\.jpg_\.(heic|webp)$ data-type=text data="  " status-code=200
+^https?://gw\.alicdn\.com/imgextra/\w{2}/[\w!]+-\d-tps-\d{3}-\d{4}\.(jpg|png)$ data-type=text data="  " status-code=200
+^https?://acs\.m\.taobao\.com/gw/mtop\.etao\.noah\.query/.+tao_splash data-type=text data="  " status-code=200
+^https?://acs\.m\.taobao\.com/gw/mtop\.alimama\.etao\.config\.query/.+?etao_advertise data-type=text data="  " status-code=200
+^https?://acs\.m\.taobao\.com/gw/mtop\.film\.mtopadvertiseapi\.(queryadvertise|queryloadingbanner)/ data-type=text data="  " status-code=200
+^https?://gw\.kaola\.com/gw/dgmobile/newOpenAd data-type=text data="  " status-code=200
+^https?:\/\/acs\.m\.taobao\.com\/gw\/mtop\.alibaba\.cbu\.app\.homepage\.startup data-type=text data="  " status-code=200
+^https?:\/\/sdk\.alibaba\.com\.ailbaba\.me\/.*?\/v\d\/(version|top_notice\?|advert\?position=[^2]+) data-type=text data="  " status-code=200
+^https?:\/\/acs\.m\.taobao\.com\/gw\/mtop\.damai\.wireless\.home\.welcome data-type=text data="  " status-code=200
+^https?:\/\/acs\.m\.taobao\.com\/gw\/mtop\.damai\.mec\.popup\.get data-type=text data="  " status-code=200
+^https:\/\/acs\.m\.taobao\.com\/gw\/mtop\.fliggy\.crm\.screen\.allresource data-type=text data="  " status-code=200
+^https:\/\/acs\.m\.taobao\.com\/gw\/mtop\.fliggy\.crm\.screen\.availablesplashstrategies data-type=text data="  " status-code=200
+^https?:\/\/acs\.m\.taobao\.com\/gw\/mtop\.wdk\.render\.querysinglepage data-type=text data="  " status-code=200
+^https?:\/\/acs-m\.freshippo\.com\/gw\/mtop\.wdk\.render\.querysinglepage data-type=text data="  " status-code=200
+^https?:\/\/acs\.m\.taobao\.com\/gw\/mtop\.alimama\.etao\.config\.query data-type=text data="  " status-code=200
+^https?:\/\/acs\.m\.taobao\.com\/gw\/mtop\.alibaba\.mos\.app\.homepage\.launch data-type=text data="  " status-code=200
+^https?:\/\/zconfig\.alibabausercontent\.com\/zconfig data-type=text data="  " status-code=200
+^https?:\/\/acs\.m\.taobao\.com\/gw\/mtop\.film\.mtopadvertiseapi\.queryadvertise\/ data-type=text data="  " status-code=200
+^https?:\/\/guide-acs\.m\.taobao\.com\/gw\/mtop\.taobao\.wireless\.home\.splash\.awesome\.get data-type=text data="  " status-code=200
+^https?:\/\/guide-acs\.m\.taobao\.com\/gw\/mtop\.fc\.resource\.tacdata\.get data-type=text data="  " status-code=200
+^https?:\/\/acs\.m\.taobao\.com\/gw\/mtop\.alibaba\.aicloud\.splash data-type=text data="  " status-code=200
+^https?:\/\/sp\.kaola\.com\/api\/openad data-type=text data="  " status-code=200
+^https?:\/\/acs\.m\.goofish\.com\/gw\/mtop.*splash\.ads data-type=text data="  " status-code=200
+^https?:\/\/acs\.m\.taobao\.com\/gw\/mtop\.etao\.noah\.query.*etao_splash data-type=text data="  " status-code=200
+^https?:\/\/[a-zA-Z0-9_.-]+\.cainiao\.com\/gw\/mtop\.cainiao\.guoguo\.nbnetflow\.ads\.(?!.*_home) data-type=text data="  " status-code=200
+^https?:\/\/[a-zA-Z0-9_.-]+\.cainiao\.com\/gw\/mtop\.cainiao\.guoguo\.nbnetflow\.ads\.mshow\.cn data-type=text data="  " status-code=200
+^https?:\/\/[a-zA-Z0-9_.-]+\.cainiao\.com\/gw\/mtop\.cainiao\.nbcps\.presentation\.fetch\.cn data-type=text data="  " status-code=200
+^https?:\/\/[a-zA-Z0-9_.-]+\.cainiao\.com\/gw\/mtop\.cainiao\.app\.home\.v\d+\.bottom\.area data-type=text data="  " status-code=200
+^https?:\/\/[a-zA-Z0-9_.-]+\.taobao\.com\/gw\/mtop\.cainiao\.guoguo\.nbnetflow\.ads\. data-type=text data="  " status-code=200
+^https?:\/\/[a-zA-Z0-9_.-]+\.taobao\.com\/gw\/mtop\.alimama\.abyss\.unionpage\.get data-type=text data="  " status-code=200
+^https?:\/\/[a-zA-Z0-9_.-]+\.taobao\.com\/gw\/mtop\.cainiao\.adx\.flyad\.getad data-type=text data="  " status-code=200
+^https?:\/\/[a-zA-Z0-9_.-]+\.taobao\.com\/gw\/mtop\.cainiao\.nbmensa\.research\.researchservice\.consultmerge data-type=text data="  " status-code=200
+
 [Body Rewrite]
 # Biliverse 0.7.3 未处理开屏 data.list / keep_ids；清空广告列表和保留 ID，再处理其他字段。
 http-response-jq ^https?://app\.bili(bili\.com|api\.net)/x/v2/splash/(brand/list|event/list2|list|show)(\?|$) 'if (.data | type) == "object" then (reduce ["list", "keep_ids"][] as $key (. ; if .data | has($key) then .data[$key] = [] else . end)) else . end'
 
+# 恢复 Ultra 的阿里首页营销条目处理。
+http-response-jq ^https?:\/\/acs\.m\.taobao\.com\/gw\/mtop\.alibaba.*mytab '.data.model.children |= map(select(.name | contains("营销") | not))'
+
 [Script]
+# 阿里系兼容：恢复 Ultra 的 AMDC 调度及菜鸟处理。
+Adblock.amdc=type=http-response,pattern=^http:\/\/[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)(\.[a-zA-Z0-9_-]+)?(\.[a-zA-Z0-9_-]+)?(\.[a-zA-Z0-9_-]+)?(:\d+)?\/amdc\/mobileDispatch,requires-body=1,script-path=https://raw.githubusercontent.com/ddgksf2013/Scripts/314f61060a4c72c8a8b9f6b2ff457c8d35abbdac/amdc.js
+Adblock.amdc2=type=http-response,pattern=^http:\/\/amdc\.m\.taobao\.com,requires-body=1,script-path=https://raw.githubusercontent.com/ddgksf2013/Scripts/314f61060a4c72c8a8b9f6b2ff457c8d35abbdac/amdc.js
+Adblock.cainiao_json=type=http-response,pattern=^https?:\/\/[a-zA-Z0-9_.-]+\.cainiao\.com\/gw\/mtop\.cainiao\.app\.e2e\.engine\.page\.fetch,requires-body=1,script-path=https://raw.githubusercontent.com/ddgksf2013/Scripts/314f61060a4c72c8a8b9f6b2ff457c8d35abbdac/cainiao_json.js
+Adblock.cainiao_json2=type=http-response,pattern=^https?:\/\/[a-zA-Z0-9_.-]+\.cainiao\.com\/gw\/mtop\.cainiao\.nbpresentation\.homepage\.merge\.get\.cn,requires-body=1,script-path=https://raw.githubusercontent.com/ddgksf2013/Scripts/314f61060a4c72c8a8b9f6b2ff457c8d35abbdac/cainiao_json.js
+Adblock.cainiao_json3=type=http-response,pattern=^https?:\/\/[a-zA-Z0-9_.-]+\.cainiao\.com\/gw\/mtop\.cainiao\.nbpresentation\.protocol\.homepage\.get\.cn,requires-body=1,script-path=https://raw.githubusercontent.com/ddgksf2013/Scripts/314f61060a4c72c8a8b9f6b2ff457c8d35abbdac/cainiao_json.js
+Adblock.cainiao_json4=type=http-response,pattern=^https?:\/\/[a-zA-Z0-9_.-]+\.cainiao\.com\/gw\/mtop\.cainiao\.adkeyword,requires-body=1,script-path=https://raw.githubusercontent.com/ddgksf2013/Scripts/314f61060a4c72c8a8b9f6b2ff457c8d35abbdac/cainiao_json.js
+
 Adblock.smzdm_json2=type=http-response,pattern=^https?:\/\/app-api\.smzdm\.com\/util\/loading,requires-body=1,script-path=https://raw.githubusercontent.com/ddgksf2013/Scripts/314f61060a4c72c8a8b9f6b2ff457c8d35abbdac/smzdm_json.js
 Adblock.smzdm_json3=type=http-response,pattern=^https?:\/\/.*zdmimg\.com\/cpm\/api\/v\d\/advert_distribution\/get_all_advertise,requires-body=1,script-path=https://raw.githubusercontent.com/ddgksf2013/Scripts/314f61060a4c72c8a8b9f6b2ff457c8d35abbdac/smzdm_json.js
 Adblock.smzdm_json4=type=http-response,pattern=^https?:\/\/homepage-api\.smzdm\.com\/v3\/home,requires-body=1,script-path=https://raw.githubusercontent.com/ddgksf2013/Scripts/314f61060a4c72c8a8b9f6b2ff457c8d35abbdac/smzdm_json.js
@@ -134,4 +173,4 @@ Adblock.Bili.pause.response.grpc = type=http-response, pattern=^https?://(grpc\.
 [MITM]
 # gRPC 暂停接口使用 HTTP/2。
 h2 = true
-hostname = %APPEND% grpc.biliapi.net, acs-m.freshippo.com, app.58.com, pan.baidu.com, issuecdn.baidupcs.com, c.tieba.baidu.com, tiebac.baidu.com, app.api.ke.com, apps.api.ke.com, m.ctrip.com, ma-adx.ctrip.com, api.m.jd.com, bdsp-x.jd.com, dsp-x.jd.com, api.m.mi.com, shop-api.retail.mi.com, wmapi.meituan.com, *.meituan.com, flowplus.meituan.net, img.meituan.net, p*.meituan.net, api.pinduoduo.com, api.yangkeduo.com, api.smzdm.com, app-api.smzdm.com, *.zdmimg.com, homepage-api.smzdm.com, haojia-api.smzdm.com, haojia.m.smzdm.com, baike-api.smzdm.com, s-api.smzdm.com, zhiyou.m.smzdm.com, mbasecc.bas.cmbchina.com, api.zhihu.com, www.zhihu.com, page-info.zhihu.com, web-render.zhihu.com, p0.pipi.cn, m.mynj.cn, api.weibo.cn, mapi.weibo.cn, api.weibo.com, mapi.weibo.com, boot*.weibo.com, boot.biz.weibo.com, *.uve.weibo.com, acs.m.taobao.com, guide-acs.m.taobao.com, amap-aos-info-nogw.amap.com, m*.amap.com, *.xiaohongshu.com, res.xiaojukeji.com, adv.ccb.com, ad.lofter.com, open.taou.com, api.taou.com, bbs-api.miyoushe.com, acs.m.goofish.com, ad.12306.cn, api.coolapk.com, open-cms-api.uc.cn, open-cms-api.quark.cn, interface*.music.163.com, oauth.secure.pixiv.net, app.bilibili.com, app.biliapi.net
+hostname = %APPEND% grpc.biliapi.net, app.58.com, pan.baidu.com, issuecdn.baidupcs.com, c.tieba.baidu.com, tiebac.baidu.com, app.api.ke.com, apps.api.ke.com, m.ctrip.com, ma-adx.ctrip.com, api.m.jd.com, bdsp-x.jd.com, dsp-x.jd.com, api.m.mi.com, shop-api.retail.mi.com, wmapi.meituan.com, *.meituan.com, flowplus.meituan.net, img.meituan.net, p*.meituan.net, api.pinduoduo.com, api.yangkeduo.com, api.smzdm.com, app-api.smzdm.com, *.zdmimg.com, homepage-api.smzdm.com, haojia-api.smzdm.com, haojia.m.smzdm.com, baike-api.smzdm.com, s-api.smzdm.com, zhiyou.m.smzdm.com, mbasecc.bas.cmbchina.com, api.zhihu.com, www.zhihu.com, page-info.zhihu.com, web-render.zhihu.com, p0.pipi.cn, m.mynj.cn, api.weibo.cn, mapi.weibo.cn, api.weibo.com, mapi.weibo.com, boot*.weibo.com, boot.biz.weibo.com, *.uve.weibo.com, amap-aos-info-nogw.amap.com, m*.amap.com, *.xiaohongshu.com, res.xiaojukeji.com, adv.ccb.com, ad.lofter.com, open.taou.com, api.taou.com, bbs-api.miyoushe.com, ad.12306.cn, api.coolapk.com, open-cms-api.uc.cn, open-cms-api.quark.cn, interface*.music.163.com, oauth.secure.pixiv.net, app.bilibili.com, app.biliapi.net, acs.m.taobao.com, cn-acs.m.cainiao.com, gw.alicdn.com, heic.alicdn.com, gw.kaola.com, acs.m.goofish.com, g-acs.m.goofish.com, acs-m.freshippo.com, guide-acs.m.taobao.com, sdk.alibaba.com.ailbaba.me, zconfig.alibabausercontent.com, sp.kaola.com, *.cainiao.com, acs4miniapp-inner.m.taobao.com

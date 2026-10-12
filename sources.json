@@ -1,5 +1,5 @@
 {
-  "module_version": "2026.10.11.2",
+  "module_version": "2026.10.12.2",
   "rule_source": "https://yfamilys.com/module/adultra.sgmodule",
   "scripts": [
     {
@@ -97,6 +97,26 @@
       "url": "https://github.com/Biliverse/ADBlock/releases/download/v0.7.3/response.bundle.js",
       "sha256": "04100a2075988159b9400ace821c5c6ed4493fba02cd7c03b6f8c5600cf8d855",
       "pinned": true
+    },
+    {
+      "name": "amdc.js",
+      "url": "https://raw.githubusercontent.com/ddgksf2013/Scripts/314f61060a4c72c8a8b9f6b2ff457c8d35abbdac/amdc.js",
+      "sha256": "8217f2150f8d12ae04d2c49b5da0a838e83f4de68b34df71c2da16cc1267898f",
+      "pinned": true
+    },
+    {
+      "name": "cainiao_json.js",
+      "url": "https://raw.githubusercontent.com/ddgksf2013/Scripts/314f61060a4c72c8a8b9f6b2ff457c8d35abbdac/cainiao_json.js",
+      "sha256": "508701b04e3289d37d9baa649dce8a317329b21ebd4433872dc7906866bcdd5c",
+      "pinned": true
     }
-  ]
+  ],
+  "alibaba_restore": {
+    "ultra_snapshot_sha256": "a2227bde1d573799afc8084a1c63e83891168821bf12d0d3bb781a1fd691d578",
+    "map_local_count": 35,
+    "script_count": 6,
+    "snapshot_date": "2026-10-10",
+    "mock_body": "two ASCII spaces",
+    "http2_mitm": "global h2 remains enabled for Bilibili PlayPause"
+  }
 }
