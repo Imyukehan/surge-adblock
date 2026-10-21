@@ -1,5 +1,5 @@
 {
-  "module_version": "2026.10.12.2",
+  "module_version": "2026.10.21.1",
   "rule_source": "https://yfamilys.com/module/adultra.sgmodule",
   "scripts": [
     {
@@ -87,15 +87,15 @@
       "pinned": true
     },
     {
-      "name": "bilibili-request-0.7.3.js",
-      "url": "https://github.com/Biliverse/ADBlock/releases/download/v0.7.3/request.bundle.js",
-      "sha256": "8d97bf10cfb408933db0cd8c84e7f372fc50006d9b9985e021339f2e11785bef",
+      "name": "bilibili-request-0.7.5.js",
+      "url": "https://github.com/Biliverse/ADBlock/releases/download/v0.7.5/request.bundle.js",
+      "sha256": "47d002c07da40357110c8ae5406f117bc608812d075eb54a54b2cbd768ea5b1a",
       "pinned": true
     },
     {
-      "name": "bilibili-response-0.7.3.js",
-      "url": "https://github.com/Biliverse/ADBlock/releases/download/v0.7.3/response.bundle.js",
-      "sha256": "04100a2075988159b9400ace821c5c6ed4493fba02cd7c03b6f8c5600cf8d855",
+      "name": "bilibili-response-0.7.5.js",
+      "url": "https://github.com/Biliverse/ADBlock/releases/download/v0.7.5/response.bundle.js",
+      "sha256": "e8768eb5c75bbfaea78f5798ac7827c431f81a61416a7877753f36dd36b9cb60",
       "pinned": true
     },
     {
